@@ -234,3 +234,12 @@ Generate the library file and refresh the database. Making consensus.
 ./spectrast -cJU -cAC -cD/path/to/db/<seq-db-name>.fasta -cNselected_ptm_consensus selected_ptm.splib
 ```
 
+## Combine the spectral library, with PTM (deltaMass > 0.02), and without PTM (deltaMass<0.02>)
+
+```bash
+./spectrast -Mspectrast.usermods -cJU -cAC -cNs_aureus_111_mod_unmod s_aureus_111_mdf0.splib selected_ptm_consensus.splib
+```
+Quality control with SpectraST
+```bash
+splib_name=s_aureus_111_mod_unmod;  /tools/tpp51/bin/spectrast -M/new_data/users/wulong/bitbucket/scripts/s_aureus_lib_building/spectrast.usermods -cAQ -cN${splib_name}_Q ${splib_name}.splib
+```
