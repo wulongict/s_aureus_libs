@@ -1,6 +1,4 @@
-# s_aureus_libs
-
-Building spectral library from 111 data files. 
+# Building S. aureus spectral library  
 
 
 ## Create spectral library from 111 open search results.
@@ -247,5 +245,5 @@ Generate the library file and refresh the database. Making consensus.
 ```
 Quality control with SpectraST
 ```bash
-splib_name=s_aureus_111_mod_unmod;  /tools/tpp51/bin/spectrast -M/new_data/users/wulong/bitbucket/scripts/s_aureus_lib_building/spectrast.usermods -cAQ -cN${splib_name}_Q ${splib_name}.splib
+splib_name=s_aureus_111_mod_unmod;  ./spectrast -Mspectrast.usermods -cAQ -cN${splib_name}_Q ${splib_name}.splib
 ```
