@@ -20,7 +20,7 @@ spectrast -c_MDF0.02 -cN${name}_md0 ${name}.splib
 ## Merge 111 mdf0 spectral libraries
 Combine the 111 libraries with option -cJU -cAC
 
-```
+```bash
 ./merge_111_mdf0_splib.bash
 
 ```
@@ -29,10 +29,10 @@ Combine the 111 libraries with option -cJU -cAC
 Twelve delta mass values are selected. 
 
 ### Generate AA frequency analysis
-PSMs with a >15% site frequency are collected from the 111 files to generate the final library. 
+PSMs with a >15% site frequency are collected from the 111 files to generate the final library. The selected PTMs and the corresponding sites are used in the spectrast.usermods file. 
 
 ### Generate TSV file
-```
+```python
 # First, let's get the list of PSMs. 
 import os
 import numpy as np
@@ -210,10 +210,27 @@ with open(finaltable,'w') as f:
 print(f'{finaltable} saved! row num {len(output_table)}')
 ```
 
-### Generate library from tsv file
-```
-```
-```
-! ./spectrast  -M/data/wulong/bitbucket/scripts/s_aureus_lib_building/spectrast.usermods -cD/data/wulong/data/jordyLibrary/opensearch/seqdb/genemark_ATCC43300.blastp.NCTC8325_cont_decoy.fasta -cIHCD -cP0.0 -cNselected_ptm selected_ptm_for_tsv_libimportor.tsv 
 
+### Create the user mod file
+To use the TSVImporter function, we need to provide the following usermods file. 
+```usermods
+n|+128.094963|Lys
+n|+43.005814
+n|+57.021464
+n|-131.040485|Met-Loss
+W|+15.994915
+Y|+15.994915
+W|+31.989829|Dioxidization
+S|+79.966331
+T|+79.966331
+K|+42.010565
 ```
+
+### Generate library from tsv file
+Generate the library file and refresh the database. Making consensus. 
+
+```bash
+./spectrast  -Mspectrast.usermods -cD/path/to/db/<seq-db-name>.fasta -cIHCD -cP0.0 -cNselected_ptm selected_ptm_for_tsv_libimportor.tsv 
+./spectrast -cJU -cAC -cD/path/to/db/<seq-db-name>.fasta -cNselected_ptm_consensus selected_ptm.splib
+```
+
