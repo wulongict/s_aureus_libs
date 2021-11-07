@@ -4,10 +4,16 @@ Building spectral library from 111 data files.
 
 
 ## Create spectral library from 111 open search results.
-For each search result file, processed by xinteract (PeptideProphet/iProphet), create a spectral library .
+For each search result file, processed by xinteract (PeptideProphet/iProphet), create a spectral library . Note that we have used IRT peptide defined in file cirt_peps.txt. The iRT peptides are from the following paper. 
+
+>Parker S J, Rost H, Rosenberger G, et al. Identification of a Set of Conserved Eukaryotic Internal Retention Time Standards for Data-independent Acquisition Mass Spectrometry*[S][J]. Molecular & Cellular Proteomics, 2015, 14(10): 2800-2813. 
+>
+>https://www.sciencedirect.com/science/article/pii/S1535947620326335?via%3Dihub
+
+
 
 ```
-/path/to/tpp51/bin/spectrast -cP0.0 -cq0.01 -cIHCD -co -cNXYZ interact-XYZ.ipro.pep.xml
+/path/to/tpp51/bin/spectrast -c_IRT./cirt_peps.txt -c_IRR -cP0.0 -cq0.01 -cIHCD -co -cNXYZ interact-XYZ.ipro.pep.xml
 ```
 
 ## Remove the PSMs with a delta mass grreater than 0.02
