@@ -7,7 +7,7 @@ Building spectral library from 111 data files.
 For each search result file, processed by xinteract (PeptideProphet/iProphet), create a spectral library .
 
 ```
-/path/to/tpp51/bin/spectrast -cP0.0 -cq0.01 -cIHCD -co -cNexampleFileName ../mzXMLs/interact-exampleFileName.ipro.pep.xml
+/path/to/tpp51/bin/spectrast -cP0.0 -cq0.01 -cIHCD -co -cNXYZ ../mzXMLs/interact-XYZ.ipro.pep.xml
 ```
 
 
