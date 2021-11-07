@@ -30,9 +30,25 @@ Combine the 111 libraries with option -cJU -cAC
 ```
 
 ## Create library of PSMs with delta mass greater than 0.02
-Twelve delta mass values are selected. 
+Twelve delta mass values are selected. Next, we will choose PSMs with those PTMs, but localized on a high abundent site. The modified sites are collected from pep.xml files.
 
-### Generate AA frequency analysis
+### Convert pep.xml into tsv format
+In this step, we use an inhouse tool to convert pep.xml file into a tsv file. in total we have 111 tsv files. 
+
+### Build Peptide-deltaMass vs localization information.
+Using 111 tsv files, genearte a table of localization information for each (peptide, deltamass) pair. Each row is a distinct (peptide, deltamass ) pair, each column is a data file. The content in cell of row i and column j  of the table, is the distribution of the delta mass on different sites. Assume the  the content of cell of row i, column j is  :
+
+1,4; 2,9
+
+Then it means, for the given peptide, delta mass (PTM) of row i,  there are 13 PSMs identified in data file j, where 4 PSMs got first site modified, 9 PSMs got second site modified. 
+
+### Summarize total frequency 
+For each row, calculate the total frequency for each site. 
+
+### Generate AA frequency
+Considering the amino acid of each site, the site of 12 PTMs (delta masses) can be summaried as 12 histograms. Each is "sum" of the amino frequency indicated by all the PSMs with that PTM. 
+
+### Filter PSM with amino acid site frequency of a PTM
 PSMs with a >15% site frequency are collected from the 111 files to generate the final library. The selected PTMs and the corresponding sites are used in the spectrast.usermods file. 
 
 ### Generate TSV file
