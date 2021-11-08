@@ -9,9 +9,8 @@ For each search result file, processed by xinteract (PeptideProphet/iProphet), c
 >https://www.sciencedirect.com/science/article/pii/S1535947620326335?via%3Dihub
 
 
-
 ```
-/path/to/tpp51/bin/spectrast -c_IRT./cirt_peps.txt -c_IRR -cP0.0 -cq0.01 -cIHCD -co -cNXYZ interact-XYZ.ipro.pep.xml
+spectrast -c_IRT./cirt_peps.txt -c_IRR -cP0.0 -cq0.01 -cIHCD -co -cNXYZ interact-XYZ.ipro.pep.xml
 ```
 
 ## Remove the PSMs with a delta mass greater than 0.02
@@ -33,7 +32,10 @@ Combine the 111 libraries with option -cJU -cAC
 Twelve delta mass values are selected. Next, we will choose PSMs with those PTMs, but localized on a high abundent site. The modified sites are collected from pep.xml files.
 
 ### Convert pep.xml into tsv format
-In this step, we use an inhouse tool to convert pep.xml file into a tsv file. in total we have 111 tsv files. 
+In this step, we use an inhouse tool  (named xmlparser) to convert pep.xml file into a tsv file. in total we have 111 tsv files. 
+```bash
+xmlparser --inputpepxml interact-XYZ.ipro.pep.xml
+```
 
 ### Build Peptide-deltaMass vs localization information.
 Using 111 tsv files, genearte a table of localization information for each (peptide, deltamass) pair. Each row is a distinct (peptide, deltamass ) pair, each column is a data file. The content in cell of row i and column j  of the table, is the distribution of the delta mass on different sites. Assume the  the content of cell of row i, column j is  :
@@ -94,7 +96,8 @@ splib_name=s_aureus_111_mod_unmod;  ./spectrast -Mspectrast.usermods -cAQ -cN${s
 There are two tar.gz files, the one named s_aureus_111_mod_unmod_Q.tar.gz contains 10 DECOY PSMs. For searching purpose, use the other one, s_aureus_111_mod_unmod_Q_nodecoy.tar.gz, where the DECOY PSMs are removed. 
 
 ```bash
-spectrast -cf'Protein!~DECOY' -cNs_aureus_111_mod_unmod_Q_nodecoy s_aureus_111_mod_unmod_Q.splib
+name=s_aureus_111_mod_unmod_Q
+spectrast -cf'Protein!~DECOY' -cN${name}_nodecoy ${name}.splib
 ```
 
 
