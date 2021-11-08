@@ -264,7 +264,7 @@ Quality control with SpectraST
 splib_name=s_aureus_111_mod_unmod;  ./spectrast -Mspectrast.usermods -cAQ -cN${splib_name}_Q ${splib_name}.splib
 ```
 
-### The S. aureus spectral library
+## The S. aureus spectral library
 There are two tar.gz files, the one named s_aureus_111_mod_unmod_Q.tar.gz contains 10 DECOY PSMs. For searching purpose, use the other one, s_aureus_111_mod_unmod_Q_nodecoy.tar.gz, where the DECOY PSMs are removed. 
 
 
