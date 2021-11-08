@@ -93,4 +93,8 @@ splib_name=s_aureus_111_mod_unmod;  ./spectrast -Mspectrast.usermods -cAQ -cN${s
 ## The S. aureus spectral library
 There are two tar.gz files, the one named s_aureus_111_mod_unmod_Q.tar.gz contains 10 DECOY PSMs. For searching purpose, use the other one, s_aureus_111_mod_unmod_Q_nodecoy.tar.gz, where the DECOY PSMs are removed. 
 
+```bash
+spectrast -cf'Protein!~DECOY' -cNs_aureus_111_mod_unmod_Q_nodecoy s_aureus_111_mod_unmod_Q.splib
+```
+
 
