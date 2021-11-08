@@ -14,7 +14,7 @@ For each search result file, processed by xinteract (PeptideProphet/iProphet), c
 /path/to/tpp51/bin/spectrast -c_IRT./cirt_peps.txt -c_IRR -cP0.0 -cq0.01 -cIHCD -co -cNXYZ interact-XYZ.ipro.pep.xml
 ```
 
-## Remove the PSMs with a delta mass grreater than 0.02
+## Remove the PSMs with a delta mass greater than 0.02
 For each spectral library, create another library with only delta mass close to zero Da. 
 
 ```
@@ -254,7 +254,7 @@ Generate the library file and refresh the database. Making consensus.
 ./spectrast -cJU -cAC -cD/path/to/db/<seq-db-name>.fasta -cNselected_ptm_consensus selected_ptm.splib
 ```
 
-## Combine the spectral library, with PTM (deltaMass > 0.02), and without PTM (deltaMass<0.02>)
+## Combine the spectral library, with PTM (deltaMass > 0.02), and without PTM (deltaMass<0.02)
 
 ```bash
 ./spectrast -Mspectrast.usermods -cJU -cAC -cNs_aureus_111_mod_unmod s_aureus_111_mdf0.splib selected_ptm_consensus.splib
