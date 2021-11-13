@@ -1,6 +1,5 @@
 # Building S. aureus spectral library  
 
-
 ## Create spectral library from 111 open search results.
 For each search result file, processed by xinteract (PeptideProphet/iProphet), create a spectral library . Note that we have used IRT peptide defined in file cirt_peps.txt. The iRT peptides are from the following paper. 
 
